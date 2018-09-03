@@ -1,28 +1,32 @@
 {
-  "name": "vscode-webview-react",
-  "version": "0.1.0",
+  "name": "vscode-uast-viewer",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.23.0"
   },
-  "publisher": "rebornix",
+  "publisher": "carlosms",
   "activationEvents": [
-    "onCommand:react-webview.start"
+    "onCommand:uast-viewer.start"
   ],
   "main": "./build/ext-src/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "react-webview.start",
-        "title": "Start React Webview",
-        "category": "React"
+        "command": "uast-viewer.start",
+        "title": "Parse UAST",
+        "category": "Bblfsh"
       }
     ]
   },
   "dependencies": {
+    "@types/google-protobuf": "^3.2.7",
     "codemirror": "^5.39.2",
+    "google-protobuf": "^3.6.1",
+    "grpc-web-client": "^0.6.2",
     "react": "^16.3.2",
     "react-codemirror2": "^5.1.0",
     "react-dom": "^16.3.2",
+    "react-json-view": "^1.19.1",
     "react-scripts-ts": "2.16.0",
     "uast-viewer": "^0.0.10",
     "vscode": "^1.1.17"

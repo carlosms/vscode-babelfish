@@ -4,7 +4,8 @@
     "exclude": [
       "config/**/*.js",
 	  "node_modules/**/*.ts",
-	  "ext-src/**/*.ts"
+    "ext-src/**/*.ts",
+    "ext-src/proto/**/*"
     ]
   }
 }
