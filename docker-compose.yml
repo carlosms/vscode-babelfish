@@ -2,27 +2,7 @@ version: '3.3'
 
 services:
   bblfsh:
-    image: "bblfsh/bblfshd"
-    privileged: true
-    volumes:
-      - type: volume
-        source: drivers
-        target: /var/lib/bblfshd
-    entrypoint: ["/bin/sh"]
-    command:
-    - "-c"
-    - "bblfshd & sleep 5 && bblfshctl driver install --recommended && tail -f /dev/null"
-
-  grpcwebproxy:
-    image: mozgiii/docker-grpcwebproxy
+    image: "bblfsh/bblfshd:v2.9.2-drivers"
     ports:
-      - "8080:8080"
-    depends_on:
-      - bblfsh
-    entrypoint: ["/grpcwebproxy"]
-    command:
-      - "--backend_addr=bblfsh:9432"
-      - "--run_tls_server=false"
-
-volumes:
-  drivers:
+      - "9432:9432"
+    privileged: true
