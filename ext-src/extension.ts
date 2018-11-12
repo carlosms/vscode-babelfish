@@ -1,9 +1,6 @@
 import * as path from "path";
 import * as vscode from "vscode";
-import Client from "./client";
-import * as protocol_pb from "./proto/protocol_pb";
-import * as uast_pb from "./proto/uast_pb";
-//import protoToMap from "./protoToMap";
+import * as request from "request";
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
@@ -27,8 +24,6 @@ class ReactPanel {
   private readonly _panel: vscode.WebviewPanel;
   private readonly _extensionPath: string;
   private _disposables: vscode.Disposable[] = [];
-
-  private _client: Client;
 
   public static createOrShow(extensionPath: string) {
     let editor = vscode.window.activeTextEditor;
@@ -89,8 +84,6 @@ class ReactPanel {
       null,
       this._disposables
     );
-
-    this._client = new Client("http://127.0.0.1:8080");
     this.parseContents();
   }
 
@@ -102,30 +95,45 @@ class ReactPanel {
 
     let doc = editor.document;
 
-    this._client
-      .parse(doc.getText(), doc.fileName, doc.languageId, {})
-      .then((r: {}) => {
-        let res: protocol_pb.ParseResponse = r as protocol_pb.ParseResponse;
-        let uast = res.getUast();
-        if (!uast) {
+    let that = this;
+
+    request.post(
+      "http://localhost:8095/parse",
+      {
+        json: {
+          language: doc.languageId,
+          content: doc.getText(),
+          filename: doc.fileName
+        }
+      },
+      function(error, response, body) {
+        console.log("error:", error);
+        console.log("statusCode:", response && response.statusCode);
+        console.log("body:", body);
+
+        if (error != null) {
           vscode.window.showErrorMessage(
-            "The bblfsh response does not include any UAST"
+            `Error parsing the file contents: ${error}`
           );
           return;
         }
 
-        this.sendUAST(uast);
-      })
-      .catch((r: any) => {
-        vscode.window.showErrorMessage(r);
-      });
+        if (response && response.statusCode !== 200) {
+          vscode.window.showErrorMessage(
+            `Error parsing the file contents: ${body.error}`
+          );
+          return;
+        }
+
+        that.sendUAST(body.uast);
+      }
+    );
 
     return undefined;
   }
 
-  public sendUAST(uast: uast_pb.Node) {
-    //this._panel.webview.postMessage({ uast: protoToMap(uast) });
-    this._panel.webview.postMessage({ uast: uast.toObject() });
+  public sendUAST(uast: Object) {
+    this._panel.webview.postMessage({ uast: uast });
   }
 
   public dispose() {
