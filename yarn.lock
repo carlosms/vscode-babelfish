@@ -8173,7 +8173,7 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vscode@^1.1.17:
+vscode@^1.1.21:
   version "1.1.21"
   resolved "https://registry.yarnpkg.com/vscode/-/vscode-1.1.21.tgz#1c8253d6238aefb4112d6e58cf975ad25313dafc"
   integrity sha512-tJl9eL15ZMm6vzCYYeQ26sSYRuXGMGPsaeIAmG2rOOYRn01jdaDg6I4b9G5Ed6FISdmn6egpKThk4o4om8Ax/A==
