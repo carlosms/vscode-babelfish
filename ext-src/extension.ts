@@ -32,17 +32,23 @@ class ReactPanel {
       return;
     }
 
-    const column = editor.viewColumn;
-
     // If we already have a panel, show it.
     // Otherwise, create a new panel.
     if (ReactPanel.currentPanel) {
-      ReactPanel.currentPanel._panel.reveal(column);
-    } else {
-      ReactPanel.currentPanel = new ReactPanel(
-        extensionPath,
-        vscode.ViewColumn.Two
+      ReactPanel.currentPanel._panel.reveal(
+        ReactPanel.currentPanel._panel.viewColumn
       );
+
+      ReactPanel.currentPanel.parseContents();
+    } else {
+      let column = vscode.ViewColumn.Active;
+      if (editor.viewColumn === vscode.ViewColumn.One) {
+        column = vscode.ViewColumn.Two;
+      }
+
+      ReactPanel.currentPanel = new ReactPanel(extensionPath, column);
+
+      ReactPanel.currentPanel.parseContents();
     }
   }
 
@@ -57,6 +63,9 @@ class ReactPanel {
       {
         // Enable javascript in the webview
         enableScripts: true,
+
+        // prevent state from disappearing when the panel loses visibility
+        retainContextWhenHidden: true,
 
         // And restrict the webview to only loading content from our extension's `media` directory.
         localResourceRoots: [
@@ -84,7 +93,6 @@ class ReactPanel {
       null,
       this._disposables
     );
-    this.parseContents();
   }
 
   protected parseContents() {
@@ -112,9 +120,12 @@ class ReactPanel {
         console.log("body:", body);
 
         if (error != null) {
-          vscode.window.showErrorMessage(
-            `Error parsing the file contents: ${error}`
-          );
+          let msg = `Error parsing the file contents: ${error}`;
+          if (error.code === "ECONNREFUSED") {
+            msg += `.\nPlease make sure bblfshd and bblfsh-json-proxy are running. See https://github.com/carlosms/vscode-uast-viewer`;
+          }
+
+          vscode.window.showErrorMessage(msg);
           return;
         }
 
