@@ -15,8 +15,6 @@ docker-compose up
 Based on:
 - https://github.com/rebornix/vscode-webview-react
 - https://github.com/bblfsh/uast-viewer
-- https://github.com/smacker/in-browser-uast
-- https://github.com/mac-s-g/react-json-view
 
 ## Development
 

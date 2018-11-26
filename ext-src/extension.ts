@@ -102,6 +102,7 @@ class ReactPanel {
     }
 
     let doc = editor.document;
+    this._panel.title = `Bblfsh UAST ${doc.fileName}`;
 
     let that = this;
 

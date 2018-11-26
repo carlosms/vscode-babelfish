@@ -4,8 +4,6 @@ import UASTViewer from "uast-viewer";
 import { expandRootIds, uastV2 } from "uast-viewer";
 import "uast-viewer/dist/default-theme.css";
 
-import ReactJson from "react-json-view";
-
 // Same values as the ones applied by withUASTEditor in CodeViewer.js
 // https://github.com/bblfsh/uast-viewer/blob/v0.2.0/src/withUASTEditor.js#L208
 const ROOT_ID = 1;
@@ -35,10 +33,6 @@ class App extends React.Component<{}, IState> {
   }
 
   public render() {
-    return this.renderUAST();
-  }
-
-  public renderUAST() {
     if (this.state.uast === undefined) {
       return <div>loading...</div>;
     }
@@ -48,24 +42,6 @@ class App extends React.Component<{}, IState> {
     const rootIds = searchResults || [ROOT_ID];
 
     return <UASTViewer uast={flatUAST} rootIds={rootIds} />;
-  }
-
-  public renderBoth() {
-    return (
-      <div className="App" style={{ height: "100%" }}>
-        <div style={{ height: "50%", minHeight: "500px" }}>
-          {this.renderUAST()}
-        </div>
-        <div style={{ height: "50%" }}>
-          <ReactJson
-            src={this.state.uast || {}}
-            iconStyle="square"
-            enableClipboard={false}
-            displayDataTypes={false}
-          />
-        </div>
-      </div>
-    );
   }
 
   private getSearchResults(flatUAST: any) {

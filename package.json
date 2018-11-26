@@ -23,7 +23,6 @@
     "react": "^16.6.1",
     "react-codemirror2": "^5.1.0",
     "react-dom": "^16.6.1",
-    "react-json-view": "^1.19.1",
     "react-scripts-ts": "2.16.0",
     "request": "^2.88.0",
     "uast-viewer": "^0.2.0",
