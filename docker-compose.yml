@@ -6,3 +6,9 @@ services:
     ports:
       - "9432:9432"
     privileged: true
+  bblfsh-json-proxy:
+    image: "carlosms/bblfsh-json-proxy:v0.0.1"
+    ports:
+      - "8095:8095"
+    environment:
+      BBLFSH_JSON_SERVER_URL: bblfsh:9432

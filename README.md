@@ -1,18 +1,16 @@
 # VSCode uast-viewer
 
-**NOTE**: work in progress, not even alpha code
+**NOTE**: work in progress
 
-A personal project to visualize UAST from VSCode using [the webview API](https://code.visualstudio.com/docs/extensions/webview).
+A personal project to visualize [Babelfsih Universal Abstract Syntax Trees (UAST)](https://doc.bblf.sh/) from [Visual Studio Code](https://code.visualstudio.com/) using [the webview API](https://code.visualstudio.com/docs/extensions/webview).
 
-Requires [bblfshd](https://github.com/bblfsh/bblfshd) and [bblfsh JSON proxy](https://github.com/carlosms/bblfsh-json-proxy), both can be run with docker compose:
+![screenshot](./doc/screenshot.png)
+
+Requires [bblfshd](https://github.com/bblfsh/bblfshd) and [bblfsh JSON proxy](https://github.com/carlosms/bblfsh-json-proxy). Both can be run downloading this project's [docker-compose.yml](./docker-compose.yml) and running:
 
 ```bash
 docker-compose up
 ```
-
-_TODO: bblfsh-json-proxy is not published to docker hub and needs to be run manually from sources._
-
-![screenshot](./doc/screenshot.png)
 
 Based on:
 - https://github.com/rebornix/vscode-webview-react
@@ -28,5 +26,6 @@ Run following commands in the terminal
 yarn install
 yarn build
 ```
-And then press F5, in Extension Development Host session, run `Bblfsh: Parse UAST` command from command palette.
-Right now you can only run production bits (`yarn build`) in the webview.
+
+Then in VS Code  start debugging (F5), and in the Extension Development Host session, run `Bblfsh: Parse UAST` from the command palette.
+Right now you can only run production bits (`yarn build`) in the webview. For every change you will need to build and restart debugging.
