@@ -101,6 +101,12 @@ class ReactPanel {
       this,
       this._disposables
     );
+
+    vscode.window.onDidChangeTextEditorSelection(
+      this.onDidChangeTextEditorSelection,
+      this,
+      this._disposables
+    );
   }
 
   protected parseContents(doc: vscode.TextDocument) {
@@ -153,13 +159,23 @@ class ReactPanel {
     this._panel.webview.postMessage({ uast: uast });
   }
 
-  public sendLoading(){
-    this._panel.webview.postMessage({ uast: undefined });
+  public sendLoading() {
+    this._panel.webview.postMessage({ loading: true });
   }
 
   public onDidSaveTextDocument(e: vscode.TextDocument) {
-    if (e.fileName === this._fileName){
+    if (e.fileName === this._fileName) {
       this.parseContents(e);
+    }
+  }
+
+  public onDidChangeTextEditorSelection(
+    e: vscode.TextEditorSelectionChangeEvent
+  ) {
+    if (e.textEditor.document.fileName === this._fileName) {
+      this._panel.webview.postMessage({
+        cursor: e.textEditor.selection.active
+      });
     }
   }
 

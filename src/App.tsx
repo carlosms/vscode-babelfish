@@ -1,14 +1,10 @@
 import * as React from "react";
 
-import FlatUASTViewer from "uast-viewer";
-import { expandRootIds, uastV2 } from "uast-viewer";
 import "uast-viewer/dist/default-theme.css";
+import { DetachedEditor } from "./DetachedEditor";
 
 // Same values as the ones applied by withUASTEditor in CodeViewer.js
 // https://github.com/bblfsh/uast-viewer/blob/v0.2.0/src/withUASTEditor.js#L208
-const ROOT_ID = 1;
-const ROOT_IDS = [ROOT_ID];
-const LEVELS_EXPAND = 2;
 
 interface IState {
   uast: object | undefined;
@@ -26,9 +22,17 @@ class App extends React.Component<{}, IState> {
       // tslint:disable-next-line
       // console.log(`message received. uast: ${JSON.stringify(event.data.uast,null,"  ")}`);
 
-      this.setState({
-        uast: event.data.uast
-      });
+      if (event.data.uast !== undefined) {
+        this.setState({
+          uast: event.data.uast
+        });
+      }
+
+      if (event.data.loading === true) {
+        this.setState({
+          uast: undefined
+        });
+      }
     });
   }
 
@@ -37,40 +41,7 @@ class App extends React.Component<{}, IState> {
       return <div>loading...</div>;
     }
 
-    const flatUAST = this.transform(this.state.uast);
-    const searchResults = this.getSearchResults(flatUAST);
-    const rootIds = searchResults || [ROOT_ID];
-
-    return <FlatUASTViewer flatUast={flatUAST} rootIds={rootIds} />;
-  }
-
-  private getSearchResults(flatUAST: any) {
-    if (!flatUAST) {
-      return null;
-    }
-
-    const rootNode = flatUAST[ROOT_ID];
-    if (!rootNode) {
-      return null;
-    }
-
-    if (Array.isArray(rootNode.n)) {
-      return rootNode.n.map((c: any) => c.id);
-    }
-
-    return null;
-  }
-
-  // Applies the uast-viewer object shape transformer, and expands the first
-  // 2 levels
-  private transform(uast: any) {
-    const flatUAST = uastV2.transformer(uast);
-    return expandRootIds(
-      flatUAST,
-      ROOT_IDS,
-      LEVELS_EXPAND,
-      uastV2.getChildrenIds
-    );
+    return <DetachedEditor uast={this.state.uast} />;
   }
 }
 
