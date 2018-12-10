@@ -14,10 +14,6 @@ Requires [bblfshd](https://github.com/bblfsh/bblfshd) and [bblfsh JSON proxy](ht
 docker-compose up
 ```
 
-Based on:
-- https://github.com/rebornix/vscode-webview-react
-- https://github.com/bblfsh/uast-viewer
-
 ## Install
 
 At this moment the extension is not available in the VS Code Marketplace. You will need to install it manually, following the [official instructions](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix):
@@ -43,3 +39,7 @@ To package locally, install [`vsce`](https://github.com/Microsoft/vscode-vsce) a
 ```bash
 vsce package --baseContentUrl https://github.com/carlosms/vscode-babelfish --baseImagesUrl https://github.com/carlosms/vscode-babelfish
 ```
+
+Based on these projects:
+- https://github.com/rebornix/vscode-webview-react
+- https://github.com/bblfsh/uast-viewer
