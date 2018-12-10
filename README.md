@@ -4,7 +4,9 @@
 
 A personal project to visualize [Babelfsih Universal Abstract Syntax Trees (UAST)](https://doc.bblf.sh/) from [Visual Studio Code](https://code.visualstudio.com/) using [the webview API](https://code.visualstudio.com/docs/extensions/webview).
 
-![screenshot](./doc/screenshot.png)
+![screenshot](./doc/screencast.gif)
+
+## Requirements
 
 Requires [bblfshd](https://github.com/bblfsh/bblfshd) and [bblfsh JSON proxy](https://github.com/carlosms/bblfsh-json-proxy). Both can be run downloading this project's [docker-compose.yml](./docker-compose.yml) and running:
 
@@ -15,6 +17,14 @@ docker-compose up
 Based on:
 - https://github.com/rebornix/vscode-webview-react
 - https://github.com/bblfsh/uast-viewer
+
+## Install
+
+At this moment the extension is not available in the VS Code Marketplace. You will need to install it manually, following the [official instructions](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix):
+- Download the latest `.vsix` file from the [releases page](https://github.com/carlosms/vscode-babelfish/releases).
+- Run the `Extensions: Install from VSIX` command in the VS Code Command Palette, and open the downloaded file.
+
+Now you can run the command `Bblfsh: Parse UAST` from the Command Palette.
 
 ## Development
 
