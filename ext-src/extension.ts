@@ -4,7 +4,7 @@ import * as request from "request";
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand("uast-viewer.start", () => {
+    vscode.commands.registerCommand("babelfish.start", () => {
       ReactPanel.createOrShow(context.extensionPath);
     })
   );
@@ -128,7 +128,7 @@ class ReactPanel {
         if (error != null) {
           let msg = `Error parsing the file contents: ${error}`;
           if (error.code === "ECONNREFUSED") {
-            msg += `.\nPlease make sure bblfshd and bblfsh-json-proxy are running. See https://github.com/carlosms/vscode-uast-viewer`;
+            msg += `.\nPlease make sure bblfshd and bblfsh-json-proxy are running. See https://github.com/carlosms/vscode-babelfish`;
           }
 
           vscode.window.showErrorMessage(msg);

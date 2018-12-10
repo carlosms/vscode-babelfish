@@ -1,9 +1,9 @@
 {
-  "name": "vscode-uast-viewer",
-  "homepage": "https://github.com/carlosms/vscode-uast-viewer",
+  "name": "vscode-babelfish",
+  "homepage": "https://github.com/carlosms/vscode-babelfish",
   "repository": {
     "type": "git",
-    "url": "https://github.com/carlosms/vscode-uast-viewer.git"
+    "url": "https://github.com/carlosms/vscode-babelfish.git"
   },
   "version": "0.0.1",
   "engines": {
@@ -11,13 +11,13 @@
   },
   "publisher": "carlosms",
   "activationEvents": [
-    "onCommand:uast-viewer.start"
+    "onCommand:babelfish.start"
   ],
   "main": "./build/ext-src/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "uast-viewer.start",
+        "command": "babelfish.start",
         "title": "Parse UAST",
         "category": "Bblfsh"
       }

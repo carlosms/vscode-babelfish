@@ -1,4 +1,4 @@
-# VSCode UAST Viewer
+# VS Code Babelfish Extension
 
 **NOTE**: work in progress
 
@@ -31,5 +31,5 @@ Right now you can only run production bits (`yarn build`) in the webview. For ev
 To package locally, install [`vsce`](https://github.com/Microsoft/vscode-vsce) and run:
 
 ```bash
-vsce package --baseContentUrl https://github.com/carlosms/vscode-uast-viewer --baseImagesUrl https://github.com/carlosms/vscode-uast-viewer
+vsce package --baseContentUrl https://github.com/carlosms/vscode-babelfish --baseImagesUrl https://github.com/carlosms/vscode-babelfish
 ```
