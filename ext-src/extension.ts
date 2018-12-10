@@ -24,6 +24,7 @@ class ReactPanel {
   private readonly _panel: vscode.WebviewPanel;
   private readonly _extensionPath: string;
   private _disposables: vscode.Disposable[] = [];
+  private _fileName: string = "";
 
   public static createOrShow(extensionPath: string) {
     let editor = vscode.window.activeTextEditor;
@@ -39,7 +40,7 @@ class ReactPanel {
         ReactPanel.currentPanel._panel.viewColumn
       );
 
-      ReactPanel.currentPanel.parseContents();
+      ReactPanel.currentPanel.parseContents(editor.document);
     } else {
       let column = vscode.ViewColumn.Active;
       if (editor.viewColumn === vscode.ViewColumn.One) {
@@ -48,7 +49,7 @@ class ReactPanel {
 
       ReactPanel.currentPanel = new ReactPanel(extensionPath, column);
 
-      ReactPanel.currentPanel.parseContents();
+      ReactPanel.currentPanel.parseContents(editor.document);
     }
   }
 
@@ -93,16 +94,20 @@ class ReactPanel {
       null,
       this._disposables
     );
+
+    // Watch for text document save events
+    vscode.workspace.onDidSaveTextDocument(
+      this.onDidSaveTextDocument,
+      this,
+      this._disposables
+    );
   }
 
-  protected parseContents() {
-    let editor = vscode.window.activeTextEditor;
-    if (!editor) {
-      return undefined;
-    }
-
-    let doc = editor.document;
+  protected parseContents(doc: vscode.TextDocument) {
     this._panel.title = `Bblfsh UAST ${doc.fileName}`;
+    this.sendLoading();
+
+    this._fileName = doc.fileName;
 
     let that = this;
 
@@ -146,6 +151,16 @@ class ReactPanel {
 
   public sendUAST(uast: Object) {
     this._panel.webview.postMessage({ uast: uast });
+  }
+
+  public sendLoading(){
+    this._panel.webview.postMessage({ uast: undefined });
+  }
+
+  public onDidSaveTextDocument(e: vscode.TextDocument) {
+    if (e.fileName === this._fileName){
+      this.parseContents(e);
+    }
   }
 
   public dispose() {
