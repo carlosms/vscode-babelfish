@@ -1,4 +1,4 @@
-# VSCode uast-viewer
+# VSCode UAST Viewer
 
 **NOTE**: work in progress
 
@@ -20,10 +20,16 @@ Based on:
 
 Run following commands in the terminal
 
-```shell
+```bash
 yarn install
 yarn build
 ```
 
 Then in VS Code  start debugging (F5), and in the Extension Development Host session, run `Bblfsh: Parse UAST` from the command palette.
 Right now you can only run production bits (`yarn build`) in the webview. For every change you will need to build and restart debugging.
+
+To package locally, install [`vsce`](https://github.com/Microsoft/vscode-vsce) and run:
+
+```bash
+vsce package --baseContentUrl https://github.com/carlosms/vscode-uast-viewer --baseImagesUrl https://github.com/carlosms/vscode-uast-viewer
+```
