@@ -1,5 +1,13 @@
+html, body, div#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+div.uast-viewer {
+  height:100%;
 }

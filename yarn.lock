@@ -7663,10 +7663,10 @@ typescript@^2.8.3:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
-uast-viewer@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/uast-viewer/-/uast-viewer-0.2.0.tgz#081cc7f2f67bf5db03dc53cd8a451f491c49e699"
-  integrity sha512-BTYLYY6xSu0ITjC4lO2Kb14Nw4oYKh7i3mChf4HygNJRTJ93FHaYTmyqS38cA3+1FsGnEyKSz+BwATGONLJPDQ==
+uast-viewer@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/uast-viewer/-/uast-viewer-0.3.0.tgz#ea5857521e573418cd71c050027f40a413bd8a7c"
+  integrity sha512-uSYBdRX5GRsrYHqBo6m07YcM7nkoP6RnbUkH0x7+eRUlxpwaNthYjsjv0rgt2yGMfn5NEjdBULBCG9ob4TZs0Q==
 
 uglify-es@^3.3.4:
   version "3.3.9"

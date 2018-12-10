@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import UASTViewer from "uast-viewer";
+import FlatUASTViewer from "uast-viewer";
 import { expandRootIds, uastV2 } from "uast-viewer";
 import "uast-viewer/dist/default-theme.css";
 
@@ -41,7 +41,7 @@ class App extends React.Component<{}, IState> {
     const searchResults = this.getSearchResults(flatUAST);
     const rootIds = searchResults || [ROOT_ID];
 
-    return <UASTViewer uast={flatUAST} rootIds={rootIds} />;
+    return <FlatUASTViewer flatUast={flatUAST} rootIds={rootIds} />;
   }
 
   private getSearchResults(flatUAST: any) {
