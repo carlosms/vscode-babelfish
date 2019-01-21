@@ -1,15 +1,23 @@
 {
   "name": "vscode-babelfish",
+  "displayName": "Babelfish UAST Viewer",
+  "description": "Visualize Babelfish Universal Abstract Syntax Trees (UAST) from your editor",
+  "keywords": ["babelfish", "bblfsh", "uast", "ast"],
   "homepage": "https://github.com/carlosms/vscode-babelfish",
   "repository": {
     "type": "git",
     "url": "https://github.com/carlosms/vscode-babelfish.git"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.23.0"
   },
   "publisher": "carlosms",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#f9f7f5",
+    "theme": "light"
+  },
   "activationEvents": [
     "onCommand:babelfish.start"
   ],
