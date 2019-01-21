@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/carlosms/vscode-babelfish/blob/master/images/icon.png" height="128">
+  <img src="https://github.com/carlosms/vscode-babelfish/raw/master/images/icon.png" height="128">
   <br/>
   VS Code Babelfish Extension
 </h1>
