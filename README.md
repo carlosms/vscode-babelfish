@@ -18,7 +18,7 @@ docker-compose up
 
 ## Install
 
-The extension is published in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=carlosms.vscode-babelfish). You can search for **vscode-babelfish** from the VS Code Extensions view and install it from your editor.
+The extension is published in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=carlosms.babelfish). You can search for **babelfish** from the VS Code Extensions view and install it from your editor.
 
 Now you can run the command **`Bblfsh: Parse UAST`** from the Command Palette.
 

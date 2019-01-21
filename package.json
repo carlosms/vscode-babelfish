@@ -1,5 +1,5 @@
 {
-  "name": "vscode-babelfish",
+  "name": "babelfish",
   "displayName": "Babelfish UAST Viewer",
   "description": "Visualize Babelfish Universal Abstract Syntax Trees (UAST) from your editor",
   "keywords": ["babelfish", "bblfsh", "uast", "ast"],
