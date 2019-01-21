@@ -10,7 +10,7 @@ A personal project to visualize [Babelfish Universal Abstract Syntax Trees (UAST
 
 ## Requirements
 
-Requires [bblfshd](https://github.com/bblfsh/bblfshd) and [bblfsh JSON proxy](https://github.com/carlosms/bblfsh-json-proxy). Both can be run downloading this project's [docker-compose.yml](https://github.com/carlosms/vscode-babelfish/blob/master/docker-compose.yml) and running:
+Requires [bblfshd](https://github.com/bblfsh/bblfshd) and [bblfsh JSON proxy](https://github.com/carlosms/bblfsh-json-proxy). Both can be run downloading this project's [docker-compose.yml](docker-compose.yml) and running:
 
 ```bash
 docker-compose up
@@ -37,7 +37,7 @@ Right now you can only run production bits (`yarn build`) in the webview. For ev
 To package locally, install [`vsce`](https://github.com/Microsoft/vscode-vsce) and run:
 
 ```bash
-vsce package --yarn --baseContentUrl https://github.com/carlosms/vscode-babelfish --baseImagesUrl https://github.com/carlosms/vscode-babelfish
+vsce package --yarn --baseContentUrl https://github.com/carlosms/vscode-babelfish/blob/master/ --baseImagesUrl https://github.com/carlosms/vscode-babelfish/raw/master
 ```
 
 To install this extension manually, follow the [official instructions](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix):
