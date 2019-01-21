@@ -37,7 +37,7 @@ Right now you can only run production bits (`yarn build`) in the webview. For ev
 To package locally, install [`vsce`](https://github.com/Microsoft/vscode-vsce) and run:
 
 ```bash
-vsce package --baseContentUrl https://github.com/carlosms/vscode-babelfish --baseImagesUrl https://github.com/carlosms/vscode-babelfish
+vsce package --yarn --baseContentUrl https://github.com/carlosms/vscode-babelfish --baseImagesUrl https://github.com/carlosms/vscode-babelfish
 ```
 
 Based on these projects:
