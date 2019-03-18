@@ -2,7 +2,12 @@
   "name": "babelfish",
   "displayName": "Babelfish UAST Viewer",
   "description": "Visualize Babelfish Universal Abstract Syntax Trees (UAST) from your editor",
-  "keywords": ["babelfish", "bblfsh", "uast", "ast"],
+  "keywords": [
+    "babelfish",
+    "bblfsh",
+    "uast",
+    "ast"
+  ],
   "homepage": "https://github.com/carlosms/vscode-babelfish",
   "repository": {
     "type": "git",
@@ -37,8 +42,7 @@
     "react-codemirror2": "^5.1.0",
     "react-dom": "^16.6.1",
     "request": "^2.88.0",
-    "uast-viewer": "^0.3.0",
-    "vscode": "^1.1.21"
+    "uast-viewer": "^0.4.0"
   },
   "scripts": {
     "vscode:prepublish": "./scripts/build-non-split.js && tsc -p tsconfig.extension.json",
@@ -49,14 +53,15 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.18",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.11.3",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
     "@types/request": "^2.48.1",
     "react-scripts": "^2.1.2",
     "rewire": "^4.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "vscode": "^1.1.30"
   },
   "browserslist": [
     ">0.2%",
